@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ABCD Restaurant Menu</title>
+    <meta name="description" content="ABCD restaurant menu with appetizers, biryani and bread, curries, desserts and drinks.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="ember-field" aria-hidden="true"></div>
+
+    <header class="launch-page">
+      <div class="launch-atmosphere" aria-hidden="true"></div>
+      <div class="launch-content">
+        <p class="instruction">Choose a Letter to begin your culinary journey.</p>
+
+        <nav class="abcd-navigation" aria-label="Jump to menu sections">
+          <a class="abcd-letter" href="#appetizers" aria-label="Appetizers">
+            A
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+          </a>
+          <a class="abcd-letter" href="#biryani-bread" aria-label="Biryani and Bread">
+            B
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+          </a>
+          <a class="abcd-letter" href="#curries" aria-label="Curries">
+            C
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+          </a>
+          <a class="abcd-letter" href="#desserts-drinks" aria-label="Desserts and Drinks">
+            D
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+            <span class="spark-layer"></span>
+          </a>
+        </nav>
+
+        <p class="brand-subtitle">"Rooted in rich culinary traditions of the Sub-Continent and crafted for Global audience."</p>
+      </div>
+    </header>
+
+    <nav class="section-switcher" aria-label="Menu controls">
+      <div class="toolbar-group section-links" role="group" aria-label="Menu section shortcuts">
+        <a href="#appetizers">Appetizers</a>
+        <a href="#biryani-bread">Biryani &amp; Bread</a>
+        <a href="#curries">Curries</a>
+        <a href="#desserts-drinks">Desserts &amp; Drinks</a>
+      </div>
+      <div class="toolbar-group filter-group" role="group" aria-label="Dietary filter">
+        <button class="filter-button is-active" type="button" data-filter="all">All</button>
+        <button class="filter-button" type="button" data-filter="veg">Vegetarian</button>
+        <button class="filter-button" type="button" data-filter="nonveg">Non-vegetarian</button>
+      </div>
+    </nav>
+
+    <main id="menu" class="menu-shell">
+      <div id="menu-root" class="menu-root"></div>
+      <p id="empty-state" class="empty-state" hidden>No menu items match this filter.</p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
