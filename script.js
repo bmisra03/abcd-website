@@ -282,11 +282,11 @@ function renderItem(entry, category) {
 
   return `
     <article class="menu-item" data-diet="${entry.diet}">
-      <div class="item-topline">
+      <div class="item-main">
         <h4 class="item-name">${escapeHtml(entry.name)}</h4>
-        <span class="item-price">$${entry.price}</span>
+        <div class="badges">${badges}</div>
       </div>
-      <div class="badges">${badges}</div>
+      <span class="item-price">$${entry.price}</span>
       ${entry.description ? `<p class="item-desc">${escapeHtml(entry.description)}</p>` : ""}
     </article>
   `;

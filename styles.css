@@ -496,6 +496,41 @@ h3 {
   padding: 28px 0 64px;
 }
 
+.icon-key {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 18px;
+  margin-bottom: 30px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(212, 175, 55, 0.14);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.icon-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.icon-key img {
+  width: 17px;
+  height: 17px;
+}
+
+.key-label {
+  color: var(--gold);
+  font-family: Cinzel, Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .filter-group {
   flex-wrap: nowrap;
 }
@@ -610,7 +645,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   grid-template-areas:
-    "title badges"
+    "title price"
     "desc desc";
   gap: 7px 14px;
   align-items: baseline;
@@ -629,15 +664,15 @@ h3 {
   background: rgba(255, 170, 0, 0.045);
 }
 
-.item-topline {
+.item-main {
   grid-area: title;
   display: grid;
-  grid-template-columns: minmax(0, max-content) minmax(28px, 1fr) auto;
-  gap: 14px;
+  grid-template-columns: minmax(0, max-content) auto minmax(28px, 1fr);
+  gap: 10px;
   align-items: baseline;
 }
 
-.item-topline::after {
+.item-main::after {
   content: "";
   border-bottom: 1px dotted rgba(212, 175, 55, 0.3);
   transform: translateY(-4px);
@@ -653,6 +688,8 @@ h3 {
 }
 
 .item-price {
+  grid-area: price;
+  justify-self: end;
   color: var(--gold-light);
   font-weight: 500;
   white-space: nowrap;
@@ -667,11 +704,10 @@ h3 {
 }
 
 .badges {
-  grid-area: badges;
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .badge {
@@ -769,32 +805,21 @@ h3 {
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-areas:
       "title price"
-      "badges badges"
       "desc desc";
     gap: 7px 10px;
     padding: 15px 0;
   }
 
-  .item-topline {
-    display: contents;
+  .item-main {
+    grid-template-columns: minmax(0, max-content) auto;
   }
 
-  .item-topline::after {
+  .item-main::after {
     display: none;
   }
 
   .item-name {
-    grid-area: title;
     font-size: 0.98rem;
-  }
-
-  .item-price {
-    grid-area: price;
-    justify-self: end;
-  }
-
-  .badges {
-    justify-content: flex-start;
   }
 
   .category-heading {
