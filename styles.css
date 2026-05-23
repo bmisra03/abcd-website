@@ -95,8 +95,8 @@ input {
   inset: 0;
   background:
     radial-gradient(circle at center 80%, rgba(42, 8, 0, 0.98) 0, rgba(10, 10, 10, 0.84) 62%, rgba(10, 10, 10, 0.98) 100%),
-    linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65)),
-    url("https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1800&q=80") center / cover;
+    radial-gradient(circle at center 48%, rgba(212, 175, 55, 0.1) 0, rgba(10, 10, 10, 0) 36%),
+    linear-gradient(rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.72));
   transform: scale(1.02);
 }
 
@@ -650,7 +650,7 @@ h3 {
   gap: 7px 14px;
   align-items: baseline;
   min-height: 0;
-  padding: 17px 0;
+  padding: 22px 0;
   border: 0;
   border-bottom: 1px solid rgba(212, 175, 55, 0.14);
   border-radius: 0;
@@ -667,15 +667,13 @@ h3 {
 .item-main {
   grid-area: title;
   display: grid;
-  grid-template-columns: minmax(0, max-content) auto minmax(28px, 1fr);
+  grid-template-columns: minmax(0, max-content) auto;
   gap: 10px;
   align-items: baseline;
 }
 
 .item-main::after {
-  content: "";
-  border-bottom: 1px dotted rgba(212, 175, 55, 0.3);
-  transform: translateY(-4px);
+  content: none;
 }
 
 .item-name {
@@ -691,6 +689,7 @@ h3 {
   grid-area: price;
   justify-self: end;
   color: var(--gold-light);
+  font-family: Cinzel, Georgia, serif;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -807,7 +806,7 @@ h3 {
       "title price"
       "desc desc";
     gap: 7px 10px;
-    padding: 15px 0;
+    padding: 19px 0;
   }
 
   .item-main {
