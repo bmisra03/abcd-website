@@ -38,41 +38,39 @@ body {
 .ember-field {
   position: fixed;
   inset: 0;
-  z-index: 0;
+  z-index: 2;
   pointer-events: none;
   overflow: hidden;
   background: transparent;
 }
 
-.ember-field::before,
-.ember-field::after {
-  content: "";
+.ember-field span {
   position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(212, 175, 55, 0.82) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255, 170, 0, 0.58) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255, 69, 0, 0.5) 0 1.5px, transparent 2.5px);
-  background-size: 160px 220px, 230px 280px, 310px 360px;
-  background-position: 8% 100%, 54% 105%, 88% 110%;
-  opacity: 0.26;
-  animation: menu-embers-rise 12s linear infinite;
+  left: calc(50% + var(--x));
+  bottom: -12px;
+  width: calc(5px * var(--s));
+  height: calc(5px * var(--s));
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 238, 180, 0.95) 0 18%, rgba(255, 170, 0, 0.75) 42%, rgba(255, 69, 0, 0.15) 74%, transparent 100%);
+  box-shadow: 0 0 calc(18px * var(--s)) rgba(255, 120, 0, 0.78);
+  opacity: 0;
+  transform: translate3d(0, 0, 0) scale(var(--s));
+  animation: ember-particle var(--d) ease-out infinite;
+  animation-delay: var(--delay);
 }
 
-.ember-field::after {
-  filter: blur(1px);
-  opacity: 0.18;
-  background-size: 190px 260px, 280px 330px, 360px 420px;
-  background-position: 22% 118%, 68% 112%, 96% 124%;
-  animation-duration: 18s;
-  animation-delay: -6s;
+.ember-field span:nth-child(3n) {
+  filter: blur(0.8px);
 }
 
-.launch-page,
+.ember-field span:nth-child(4n) {
+  background: radial-gradient(circle, rgba(255, 245, 210, 0.9) 0 14%, rgba(212, 175, 55, 0.65) 40%, rgba(255, 69, 0, 0.1) 74%, transparent 100%);
+}
+
 .section-switcher,
 .menu-shell {
   position: relative;
-  z-index: 1;
+  z-index: 5;
 }
 
 button,
@@ -93,6 +91,7 @@ input {
 .launch-atmosphere {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
     radial-gradient(circle at center 80%, rgba(42, 8, 0, 0.98) 0, rgba(10, 10, 10, 0.84) 62%, rgba(10, 10, 10, 0.98) 100%),
     radial-gradient(circle at center 48%, rgba(212, 175, 55, 0.1) 0, rgba(10, 10, 10, 0) 36%),
@@ -100,8 +99,7 @@ input {
   transform: scale(1.02);
 }
 
-.launch-atmosphere::before,
-.launch-atmosphere::after {
+.launch-atmosphere::before {
   content: "";
   position: absolute;
   inset: auto 0 0;
@@ -113,20 +111,9 @@ input {
   animation: ember-breathe 5.8s ease-in-out infinite alternate;
 }
 
-.launch-atmosphere::after {
-  height: 100%;
-  background-image:
-    radial-gradient(circle, rgba(212, 175, 55, 0.78) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255, 69, 0, 0.64) 0 1px, transparent 2px);
-  background-size: 140px 180px, 190px 230px;
-  background-position: 10% 100%, 70% 100%;
-  filter: none;
-  opacity: 0.28;
-  animation: sparks-rise 9s linear infinite;
-}
-
 .launch-content {
   position: relative;
+  z-index: 5;
   display: grid;
   justify-items: center;
   gap: 34px;
@@ -167,13 +154,13 @@ h3 {
   isolation: isolate;
   display: grid;
   place-items: center;
-  width: clamp(72px, 18vw, 158px);
+  width: clamp(58px, 18vw, 158px);
   aspect-ratio: 1;
   border: 0;
   background: transparent;
   color: var(--gold-light);
   font-family: Cinzel, Georgia, serif;
-  font-size: clamp(3.8rem, 15vw, 9.5rem);
+  font-size: clamp(3.1rem, 15vw, 9.5rem);
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
@@ -393,21 +380,25 @@ h3 {
   }
 }
 
-@keyframes sparks-rise {
-  from {
-    background-position: 10% 110%, 70% 110%;
+@keyframes ember-particle {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(calc(var(--s) * 0.7));
   }
-  to {
-    background-position: 14% -20%, 66% -30%;
+  8% {
+    opacity: 1;
   }
-}
-
-@keyframes menu-embers-rise {
-  from {
-    background-position: 8% 110%, 54% 116%, 88% 122%;
+  34% {
+    opacity: 0.58;
+    transform: translate3d(calc(var(--dx) * 0.32), -24vh, 0) scale(var(--s));
   }
-  to {
-    background-position: 12% -20%, 50% -28%, 84% -34%;
+  58% {
+    opacity: 0;
+    transform: translate3d(calc(var(--dx) * 0.62), -42vh, 0) scale(calc(var(--s) * 0.5));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx), -58vh, 0) scale(calc(var(--s) * 0.2));
   }
 }
 
@@ -763,14 +754,14 @@ h3 {
   }
 
   .abcd-navigation {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    width: min(360px, 100%);
+    display: flex;
+    gap: clamp(4px, 2vw, 12px);
+    width: 100%;
   }
 
   .abcd-letter {
-    width: 100%;
+    width: clamp(58px, 22vw, 86px);
+    font-size: clamp(3.1rem, 18vw, 5.2rem);
   }
 
   .section-switcher {
